@@ -1,162 +1,330 @@
 # 🚀 Dreamstime Auto Submitter
 
-Extensão para automatizar a submissão comercial de imagens no Dreamstime.
+Extensão Chrome que automatiza o processo de submissão de imagens no Dreamstime.com, economizando horas de trabalho repetitivo.
 
-## 📋 Funcionalidades
-
-- ✅ Clica automaticamente em cada imagem da lista de uploads
-- ✅ Abre a página de edição da imagem
-- ✅ Clica no botão "Submit commercial"
-- ✅ Processa a próxima imagem automaticamente
-- ✅ Interface moderna com controle de status em tempo real
-- ✅ Configuração de delay personalizável entre clicks
-- ✅ Notificações visuais de progresso
-
-## 🔧 Instalação
-
-### 1. Criar os Ícones (Obrigatório)
-
-Antes de instalar, você precisa criar os ícones da extensão. Você pode usar qualquer ferramenta de edição de imagens ou este site gratuito: https://www.favicon-generator.org/
-
-Crie três arquivos PNG na pasta `icons/`:
-- `icon16.png` (16x16 pixels)
-- `icon48.png` (48x48 pixels)
-- `icon128.png` (128x128 pixels)
-
-**Sugestão:** Use um ícone de foguete 🚀 ou upload ⬆️ com cores roxo/azul.
-
-### 2. Instalar a Extensão no Chrome/Edge
-
-1. Abra o Chrome ou Edge
-2. Digite na barra de endereço: `chrome://extensions/` (ou `edge://extensions/`)
-3. Ative o **Modo de desenvolvedor** (toggle no canto superior direito)
-4. Clique em **"Carregar sem compactação"**
-5. Selecione a pasta: `c:/lab/extencao_navegador/dreamstime`
-6. A extensão será instalada e aparecerá na barra de ferramentas
-
-## 🎯 Como Usar
-
-1. **Acesse o Dreamstime:**
-   - Faça login na sua conta
-   - Vá para: `https://www.dreamstime.com/upload`
-
-2. **Configure a Extensão:**
-   - Clique no ícone da extensão na barra de ferramentas
-   - Configure o delay entre clicks (padrão: 2000ms = 2 segundos)
-   - Valores recomendados: 1500-3000ms
-
-3. **Inicie a Automação:**
-   - Clique em **"Iniciar Automação"**
-   - A extensão começará a processar cada imagem automaticamente
-   - Você verá notificações na página a cada ação
-   - O contador de imagens processadas será atualizado
-
-4. **Pausar/Parar:**
-   - Clique em **"Parar Automação"** a qualquer momento
-   - A automação pode ser retomada depois
-
-## ⚙️ Configurações
-
-### Delay entre Clicks
-- **Mínimo:** 1000ms (1 segundo)
-- **Máximo:** 10000ms (10 segundos)
-- **Recomendado:** 2000ms (2 segundos)
-- **Propósito:** Evitar sobrecarga no servidor e dar tempo para a página carregar
-
-## 🔍 Como Funciona
-
-1. A extensão detecta quando você está na página `/upload`
-2. Ao iniciar, ela clica na primeira imagem disponível
-3. Na página de edição (`/upload/edit*`), encontra o botão "Submit commercial"
-4. Aguarda o delay configurado e clica no botão
-5. O Dreamstime automaticamente redireciona para a próxima imagem
-6. O processo se repete até não haver mais imagens
-
-## 📊 Status e Feedback
-
-A extensão fornece feedback em tempo real:
-
-- **Indicador de Status:** 
-  - 🟢 Verde = Em execução
-  - 🔴 Vermelho = Parado
-  - ⚪ Cinza = Aguardando
-
-- **Contador:** Mostra quantas imagens foram processadas
-
-- **Notificações na Página:** 
-  - Aparecem no canto superior direito
-  - Informam sobre cada ação realizada
-  - ✅ Verde = Sucesso
-  - ⚠️ Laranja = Aviso
-  - ℹ️ Azul = Informação
-
-## 🛠️ Estrutura do Projeto
-
-```
-dreamstime/
-├── manifest.json      # Configuração da extensão
-├── background.js      # Service worker (gerencia estado)
-├── content.js         # Script injetado na página
-├── popup.html         # Interface do popup
-├── popup.css          # Estilos do popup
-├── popup.js           # Lógica do popup
-├── icons/             # Ícones da extensão
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-└── README.md          # Este arquivo
-```
-
-## ⚠️ Avisos Importantes
-
-1. **Uso Responsável:** Use delays adequados para não sobrecarregar o servidor do Dreamstime
-2. **Monitoramento:** Monitore o processo periodicamente para garantir que está funcionando corretamente
-3. **Conexão:** Mantenha uma conexão de internet estável durante o processo
-4. **Sessão:** Certifique-se de estar logado no Dreamstime antes de iniciar
-
-## 🐛 Resolução de Problemas
-
-### A extensão não aparece após instalação
-- Verifique se criou os três arquivos de ícone necessários
-- Certifique-se de que o "Modo de desenvolvedor" está ativado
-- Tente recarregar a extensão em `chrome://extensions/`
-
-### A automação não inicia
-- Verifique se está na página correta (`dreamstime.com/upload`)
-- Certifique-se de que há imagens para processar
-- Recarregue a página e tente novamente
-
-### A extensão para no meio do processo
-- Verifique sua conexão com a internet
-- Aumente o delay entre clicks
-- Recarregue a página e inicie novamente
-
-### O botão não é clicado
-- Verifique se a estrutura da página do Dreamstime não mudou
-- Abra o console do navegador (F12) para ver logs de erro
-- Reporte o problema com detalhes
-
-## 📝 Changelog
-
-### v1.0.0 (28/12/2025)
-- 🎉 Versão inicial
-- ✅ Automação de submissão comercial
-- ✅ Interface moderna com gradientes
-- ✅ Configuração de delay
-- ✅ Contador de imagens processadas
-- ✅ Notificações em tempo real
-
-## 📄 Licença
-
-Este projeto foi desenvolvido para uso pessoal. Use por sua própria conta e risco.
-
-## 💡 Suporte
-
-Em caso de problemas ou dúvidas, verifique:
-1. Este README
-2. Os logs no console do navegador (F12 → Console)
-3. Se a estrutura da página do Dreamstime mudou
+![Version](https://img.shields.io/badge/version-1.2.1-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Chrome](https://img.shields.io/badge/chrome-extension-yellow.svg)
 
 ---
 
-**Desenvolvido com ❤️ para automatizar seu workflow no Dreamstime**
+## 📋 Índice
+
+- [Características](#-características)
+- [Pré-requisitos](#-pré-requisitos)
+- [Instalação](#-instalação)
+- [Como Usar](#-como-usar)
+- [Funcionalidades](#-funcionalidades)
+- [Avisos Importantes](#-avisos-importantes)
+- [Solução de Problemas](#-solução-de-problemas)
+- [Suporte](#-suporte)
+
+---
+
+## ✨ Características
+
+- ✅ **Automação completa** do processo de submissão
+- ✅ **Widget flutuante** com progresso em tempo real
+- ✅ **Validação automática** de títulos (máx. 130 caracteres)
+- ✅ **Pausa e continuação** a qualquer momento
+- ✅ **Contador de tempo** e progresso visual
+- ✅ **Interface moderna** e intuitiva
+- ✅ **Zero configuração complexa**
+
+---
+
+## ⚠️ Pré-requisitos
+
+### **IMPORTANTE: Dados Devem Estar Preenchidos!**
+
+A extensão **NÃO PREENCHE** os metadados das imagens. Ela apenas **AUTOMATIZA O CLIQUE** no botão "Submit".
+
+**Antes de usar esta extensão, você DEVE:**
+
+1. ✅ **Fazer upload das imagens** para o Dreamstime
+2. ✅ **Preencher TODOS os campos** de cada imagem:
+   - **Título** (máx. 130 caracteres)
+   - **Descrição**
+   - **Palavras-chave**
+   - **Categorias**
+   - **Releases** (se necessário)
+   - **Outras informações** exigidas pelo Dreamstime
+
+3. ✅ **Salvar os metadados** de cada imagem
+
+**A extensão só funcionará se os dados já estiverem salvos!**
+
+---
+
+## 📥 Instalação
+
+### Método 1: Instalação Manual (Recomendado)
+
+1. **Baixe o código:**
+   ```bash
+   git clone https://github.com/fabian71/Dreamstime-Auto-Submitter.git
+   ```
+   
+   Ou baixe o [ZIP direto do GitHub](https://github.com/fabian71/Dreamstime-Auto-Submitter/archive/refs/heads/main.zip)
+
+2. **Abra o Chrome** e vá para:
+   ```
+   chrome://extensions/
+   ```
+
+3. **Ative o "Modo do desenvolvedor"** (canto superior direito)
+
+4. **Clique em "Carregar sem compactação"**
+
+5. **Selecione a pasta** onde você baixou a extensão
+
+6. **Pronto!** A extensão está instalada ✅
+
+---
+
+## 🎯 Como Usar
+
+### Passo 1: Prepare suas Imagens
+
+1. Faça login no [Dreamstime.com](https://www.dreamstime.com)
+2. Faça upload das suas imagens
+3. **PREENCHA TODOS OS METADADOS** de cada imagem:
+   - Título
+   - Descrição
+   - Palavras-chave (mínimo exigido pelo Dreamstime)
+   - Categorias
+   - Releases (se aplicável)
+4. **SALVE** as informações de cada imagem
+
+### Passo 2: Inicie a Automação
+
+1. Vá para a página de uploads:
+   ```
+   https://www.dreamstime.com/upload
+   ```
+
+2. **Clique no ícone da extensão** na barra do Chrome
+
+3. **Configure o delay** entre cliques (padrão: 2000ms)
+   - Recomendado: entre 1000ms e 3000ms
+   - Delays muito curtos podem causar problemas
+
+4. **Clique em "Iniciar Automação"**
+
+5. O popup fecha automaticamente e o processo começa!
+
+### Passo 3: Acompanhe o Progresso
+
+Um **widget flutuante** aparecerá na página mostrando:
+
+- 📊 **Progresso**: Quantas imagens foram processadas
+- ⏱️ **Tempo**: Tempo decorrido desde o início
+- 📈 **Porcentagem**: Progresso visual em barra
+
+### Passo 4: Controles
+
+**Durante a execução, você pode:**
+
+- ⏸️ **Pausar**: Para a automação temporariamente
+- ▶️ **Continuar**: Retoma de onde parou
+- 🔄 **Resetar**: Limpa tudo e volta ao início
+
+---
+
+## 🎨 Funcionalidades
+
+### 1. Validação Automática de Título
+
+Se um título tiver **mais de 130 caracteres**, a extensão:
+- ⏸️ Pausa automaticamente
+- 🚨 Mostra um modal grande de aviso
+- 🔴 Destaca o campo com problema
+- 📜 Rola até o campo para você corrigir
+
+**Você deve:**
+1. Editar o título para ≤ 130 caracteres
+2. Salvar
+3. Clicar em "Continuar" no popup da extensão
+
+### 2. Widget Flutuante
+
+- 📍 **Sempre visível** (z-index alto)
+- 📊 **Progresso em tempo real**
+- ⏱️ **Contador de tempo**
+- 💚 **Design moderno** e não intrusivo
+- 🔗 **Link para Ko-fi** (suporte ao desenvolvedor)
+
+### 3. Detecção Inteligente
+
+A extensão:
+- ✅ Aguarda o AJAX carregar
+- ✅ Detecta mudanças de URL automaticamente
+- ✅ Processa imagens sequencialmente
+- ✅ Atualiza progresso a cada submissão
+
+---
+
+## ⚠️ Avisos Importantes
+
+### ⛔ O Que a Extensão NÃO Faz
+
+- ❌ **NÃO preenche** título, descrição ou palavras-chave
+- ❌ **NÃO seleciona** categorias
+- ❌ **NÃO adiciona** releases
+- ❌ **NÃO faz upload** de imagens
+
+### ✅ O Que a Extensão FAZ
+
+- ✅ **Clica automaticamente** no botão "Submit commercial"
+- ✅ **Navega** entre as imagens
+- ✅ **Valida** o comprimento do título
+- ✅ **Mostra progresso** em tempo real
+- ✅ **Permite pausar/continuar** o processo
+
+### 🔒 Segurança
+
+- 🔐 **Código aberto** - Você pode revisar todo o código
+- 🚫 **Sem coleta de dados** - Nada é enviado para servidores externos
+- ✅ **Executa localmente** - Tudo funciona no seu navegador
+- 🛡️ **Sem permissões sensíveis** - Só acessa dreamstime.com
+
+---
+
+## 🐛 Solução de Problemas
+
+### ❓ "A extensão não inicia"
+
+**Solução:**
+1. Verifique se está na página: `https://www.dreamstime.com/upload`
+2. Recarregue a página (F5)
+3. Recarregue a extensão em `chrome://extensions/`
+
+### ❓ "Modal de título longo não aparece"
+
+**Solução:**
+1. Abra o console (F12)
+2. Procure por erros
+3. Verifique se há títulos realmente > 130 caracteres
+4. Recarregue a extensão
+
+### ❓ "Popup não fecha após iniciar"
+
+**Causa:** Erro ao conectar com o content script
+
+**Solução:**
+1. Recarregue a página do Dreamstime (F5)
+2. Recarregue a extensão
+3. Tente novamente
+
+### ❓ "Widget não aparece"
+
+**Solução:**
+1. Abra o console (F12)
+2. Procure por erros no `widget.js`
+3. Recarregue a página (F5)
+
+### ❓ "Tempo fica em 00:00"
+
+**Solução:**
+1. Clique em "Resetar Tudo"
+2. Inicie novamente
+
+---
+
+## 📊 Fluxo de Funcionamento
+
+```
+┌─────────────────────────────────────────┐
+│  1. Usuário faz upload e preenche dados │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│  2. Usuário vai para /upload e inicia   │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│  3. Extensão detecta total de imagens   │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│  4. Clica na primeira imagem            │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│  5. Valida título (≤ 130 chars)         │
+└────────────────┬────────────────────────┘
+                 │
+         ┌───────┴───────┐
+         │               │
+    ERRO │               │ OK
+         ▼               ▼
+┌──────────────┐  ┌──────────────┐
+│ Pausa e      │  │ Clica Submit │
+│ mostra modal │  └──────┬───────┘
+└──────────────┘         │
+                         ▼
+              ┌─────────────────────┐
+              │ Aguarda navegação   │
+              └──────┬──────────────┘
+                     │
+                     ▼
+              ┌─────────────────────┐
+              │ Próxima imagem      │
+              └─────────────────────┘
+                     │
+                     ▼
+              (Repete até acabar)
+```
+
+---
+
+## 💝 Suporte ao Projeto
+
+Gostou da extensão? Considere me pagar um cafezinho! ☕
+
+**[☕ Ko-fi: @dentparanoide](https://ko-fi.com/dentparanoide)**
+
+---
+
+## 📝 Changelog
+
+### v1.2.1 (2025-12-28)
+- ✅ Validação de título com modal
+- ✅ Widget flutuante melhorado
+- ✅ Timer removido do popup
+- ✅ Correção de bugs de sincronização
+- ✅ Tratamento de erros aprimorado
+
+---
+
+## 📄 Licença
+
+MIT License - Veja [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+**Desenvolvido por:** Fabian
+
+**GitHub:** [fabian71](https://github.com/fabian71)
+
+**Ko-fi:** [dentparanoide](https://ko-fi.com/dentparanoide)
+
+---
+
+## ⭐ Gostou?
+
+Se esta extensão te ajudou, considere:
+- ⭐ Dar uma estrela no GitHub
+- 🐛 Reportar bugs
+- 💡 Sugerir melhorias
+- ☕ Pagar um cafezinho
+
+---
+
+**Feito com ❤️ para a comunidade de fotógrafos do Dreamstime**
