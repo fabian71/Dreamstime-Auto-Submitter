@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "name": "Dreamstime Auto Submitter",
+    "version": "1.2.0",
+    "description": "Automatiza o processo de submissão comercial de imagens no Dreamstime",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://www.dreamstime.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.dreamstime.com/upload",
+                "https://www.dreamstime.com/upload/",
+                "https://www.dreamstime.com/upload/*"
+            ],
+            "js": [
+                "widget.js",
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
